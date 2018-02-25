@@ -1,43 +1,44 @@
 Assumptions: 
 - If a ticket is purchased and won we assume that the prize is being claimed.
 - After each Draw we reset the tickets.
-- Draw Function is generous and will give the win to the purchased ticket
+- Draw Function is generous and will give the win to the purchased ticket // TODO
 
 
-TO RUN:
-Assumes that you have Maven and JAVA8
-PORT 8080 is free
-can run Spring Boot application
+Required Technology:
+- Assumes you have installed and configured **Maven** and **JAVA8**
+- PORT **8080** is free
+- can run Spring Boot application.
+
+Instructions:
+
+*BUILD it:*
 
 unzip and navigate with your command line to the lottery folder
+- > mvn clean install
 
-mvn clean install
+Will run tests (unit and integration), 
+Will install the lottery snapshot jar to the .m2 repository folder
 
-that should run successfully given you have maven and .m2 configered locally
-Will run tests scenarios
-will install the jar to the m2 repository folder
+*RUN it:*
 
+In your command line:
+for MAC:
+> java -jar ~/.m2/repository/com/esignlive/lottery/0.0.1-SNAPSHOT/lottery-0.0.1-SNAPSHOT.jar
 
-to run:
+Follow instructions on console
 
-run the command in console:
-java -jar ~/.m2/repository/com/esignlive/lottery/0.0.1-SNAPSHOT/lottery-0.0.1-SNAPSHOT.jar
+Or simply import project to your preferred idea (Eclipse or Inellij) and run it from there.
 
-or import project to your idea and run it from there.
-(was tested on Intellij on MAC)
+Note:
+Functionality also exposed via rest so you can use the attached postman collection to make rest calls
 
-and then use read the promoted msgs
+`POST http://localhost:8080/lottery/purchase/{buyersName}`
 
----
+`POST http://localhost:8080/lottery/draw`
 
-functionality also exposed via rest. 
+`POST http://localhost:8080/lottery/reset`
 
-can run the following calls given that the application is running
--
--
--
+`GET http://localhost:8080/lottery/tickets`
 
-
-
-
+`GET http://localhost:8080/lottery/purchased-tickets`
 

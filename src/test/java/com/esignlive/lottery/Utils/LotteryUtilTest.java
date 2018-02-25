@@ -21,25 +21,7 @@ public class LotteryUtilTest
 {
 	@InjectMocks
 	LotteryUtil utilUnderTest = new LotteryUtil();
-	@Mock
-	Set<Winner> winnersMock;
-	@Mock
-	Winner winnerMock;
-	@Mock
-	Ticket ticketMock;
-	@Spy
-	MoneyPot moneyPot;
 
-
-	@Test
-	public void decreasePotAfterWinTest()
-	{
-	}
-
-	@Test
-	public void logWinnersTest(){
-
-	}
 	@Test
 	public void calculatePrizeTest()
 	{
