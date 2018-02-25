@@ -6,7 +6,8 @@ public class Ticket
 	private String nameOfBuyer;
 	private long ticketNumber;
 
-	public Ticket(final long ticketNumber,final String name,final boolean isPurchased){
+	public Ticket(final long ticketNumber, final String name, final boolean isPurchased)
+	{
 		this.purchased = isPurchased;
 		this.ticketNumber = ticketNumber;
 		this.nameOfBuyer = name;

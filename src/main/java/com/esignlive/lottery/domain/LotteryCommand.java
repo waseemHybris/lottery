@@ -4,7 +4,6 @@ public enum LotteryCommand
 {
 	PURCHASE,
 	DRAW,
-	WINNERS,
 	RESET,
 	EXIT
 }

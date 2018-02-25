@@ -8,6 +8,8 @@ import java.util.Set;
 import com.esignlive.lottery.domain.Buyer;
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;
+import com.esignlive.lottery.exceptions.OverBuyingException;
+import com.esignlive.lottery.models.MoneyPot;
 import com.esignlive.lottery.services.LotteryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +34,14 @@ public class LotteryController
 	@RequestMapping(value = "/purchase/{nameOfBuyer}", method = RequestMethod.POST)
 	public ResponseEntity<Buyer> purchaseTicket(@PathVariable @NotNull String nameOfBuyer)
 	{
-		return new ResponseEntity<>(lotteryService.purchaseTicket(nameOfBuyer),HttpStatus.CREATED);
+		try
+		{
+			return new ResponseEntity<>(lotteryService.purchaseTicket(nameOfBuyer), HttpStatus.CREATED);
+		}
+		catch (OverBuyingException overBuyingException)
+		{
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		}
 	}
 
 	@RequestMapping(value = "/reset", method = RequestMethod.POST)
@@ -45,21 +54,27 @@ public class LotteryController
 	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
 	public ResponseEntity<Set<Ticket>> getAllTickets()
 	{
-		return new ResponseEntity<>(lotteryService.getAllTickets(),HttpStatus.OK);
+		return new ResponseEntity<>(lotteryService.getAllTickets(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/purchased-tickets", method = RequestMethod.GET)
 	public ResponseEntity<Set<Ticket>> getPurchasedTickets()
 	{
 		Set<Ticket> boughtTickets = lotteryService.getPurchasedTickets();
-		return new ResponseEntity<>(boughtTickets,HttpStatus.OK);
+		return new ResponseEntity<>(boughtTickets, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/draw", method = RequestMethod.POST)
 	public ResponseEntity<Set<Winner>> draw()
 	{
 		Set<Winner> winners = lotteryService.draw();
-		return new ResponseEntity<>(winners,HttpStatus.OK);
+		return new ResponseEntity<>(winners, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/pot", method = RequestMethod.GET)
+	public ResponseEntity<Long> pot()
+	{
+
+		return new ResponseEntity<>(MoneyPot.getPot(), HttpStatus.OK);
+	}
 }

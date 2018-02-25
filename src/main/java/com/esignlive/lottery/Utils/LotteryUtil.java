@@ -1,13 +1,3 @@
-/*
- * [y] hybris Platform
- *
- * Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
- *
- * This software is the confidential and proprietary information of SAP
- * ("Confidential Information"). You shall not disclose such Confidential
- * Information and shall use it only in accordance with the terms of the
- * license agreement you entered into with SAP.
- */
 package com.esignlive.lottery.Utils;
 
 import java.util.Set;
@@ -25,6 +15,7 @@ public class LotteryUtil
 
 	/**
 	 * prints the winners
+	 *
 	 * @param winners
 	 */
 	public static void logWinners(Set<Winner> winners)
@@ -54,7 +45,7 @@ public class LotteryUtil
 	public static long calculatePrize(int i)
 	{
 		double result = 0.0;
-		double halfOfThePot = MoneyPot.getPot()/2.0;
+		double halfOfThePot = MoneyPot.getPot() / 2.0;
 		if (i == 1)
 			result = Math.floor(halfOfThePot * 0.75);
 		if (i == 2)

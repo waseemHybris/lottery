@@ -56,7 +56,21 @@ public class LotteryServiceIntegrationTest
 		Assert.assertTrue(MoneyPot.getPot() >= 250);
 	}
 
-
+	@Test
+	public void drawWithSoldOutTickets()
+	{
+		for (int i = 0; i < 50; i++)
+		{
+			serviceUnderTest.purchaseTicket(String.valueOf(i));
+		}
+		// The Money Pot should be 700 after buying 50 tickets
+		Assert.assertTrue(MoneyPot.getPot() == 200 + 10 * 50);
+		Set<Winner> winners = serviceUnderTest.draw();
+		Assert.assertEquals(3, winners.size());
+		//Assure that Money pot is still more or equal than half of it before draw
+		// (700 / 2 =  350  )
+		Assert.assertTrue(MoneyPot.getPot() >= 350);
+	}
 
 	@Test
 	public void buyATicketTest()

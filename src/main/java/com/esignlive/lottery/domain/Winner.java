@@ -9,11 +9,11 @@ public class Winner extends Buyer
 	private long prize;
 	private Place place;
 
-	public Winner(final String buyerName,final Ticket ticket,final long prize,final Place place)
+	public Winner(final String buyerName, final Ticket ticket, final long prize, final Place place)
 	{
-		super(buyerName,ticket);
-		this.prize=prize;
-		this.place= place;
+		super(buyerName, ticket);
+		this.prize = prize;
+		this.place = place;
 	}
 
 	public double getPrize()
@@ -45,7 +45,8 @@ public class Winner extends Buyer
 				'}';
 	}
 
-	public enum Place{
-		FIRST,SECOND,THIRD
+	public enum Place
+	{
+		FIRST, SECOND, THIRD
 	}
 }

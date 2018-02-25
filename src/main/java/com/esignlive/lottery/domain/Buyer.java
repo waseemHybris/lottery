@@ -5,7 +5,9 @@ public class Buyer
 {
 	private String buyerName;
 	private Ticket ticket;
-	public Buyer(final String buyerName,final Ticket ticket){
+
+	public Buyer(final String buyerName, final Ticket ticket)
+	{
 		this.buyerName = buyerName;
 		this.ticket = ticket;
 	}

@@ -1,5 +1,7 @@
 package com.esignlive.lottery.models;
 
+import javax.validation.constraints.Min;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -9,20 +11,11 @@ import org.springframework.stereotype.Component;
 public class MoneyPot
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MoneyPot.class);
-	private static MoneyPot ourInstance;
+	@Min(1)
 	private static long pot = 200;
 
 	private MoneyPot()
 	{
-	}
-
-	public static synchronized MoneyPot getInstance()
-	{
-		if (ourInstance == null)
-		{
-			ourInstance = new MoneyPot();
-		}
-		return ourInstance;
 	}
 
 	public static void increaseMoneyPot(final long increaseAmount)

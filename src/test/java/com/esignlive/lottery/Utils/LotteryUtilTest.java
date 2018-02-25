@@ -1,6 +1,7 @@
 package com.esignlive.lottery.Utils;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;
@@ -19,7 +20,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class LotteryUtilTest
 {
 	@InjectMocks
-	LotteryUtil utilUnderTest;
+	LotteryUtil utilUnderTest = new LotteryUtil();
+	@Mock
+	Set<Winner> winnersMock;
+	@Mock
+	Winner winnerMock;
+	@Mock
+	Ticket ticketMock;
 	@Spy
 	MoneyPot moneyPot;
 
@@ -40,8 +47,6 @@ public class LotteryUtilTest
 		Assert.assertTrue(utilUnderTest.calculatePrize(2) == 15);
 		Assert.assertTrue(utilUnderTest.calculatePrize(3) == 10);
 	}
-
-
 
 	@Test
 	public void calculatePrizeZeroTest()
