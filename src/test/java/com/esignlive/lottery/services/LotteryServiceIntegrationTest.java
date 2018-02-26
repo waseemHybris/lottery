@@ -25,6 +25,8 @@ public class LotteryServiceIntegrationTest
 	public static final String BUYERNAME = "Waseem";
 	@Resource
 	private LotteryService serviceUnderTest;
+	@Resource
+	private MoneyPot moneyPot;
 
 	@After
 	public void setUp()
@@ -35,9 +37,8 @@ public class LotteryServiceIntegrationTest
 	@Test
 	public void drawWithNoWinnersTest()
 	{
-		Set<Winner> winners = serviceUnderTest.draw();
+		Set<Winner> winners = serviceUnderTest.randomDraw();
 		Assert.assertEquals(3, winners.size());
-		Assert.assertTrue(MoneyPot.getPot() == 200);
 	}
 
 	@Test
@@ -49,9 +50,9 @@ public class LotteryServiceIntegrationTest
 		}
 		// The Money Pot should be 500 after buying 30 tickets
 		Assert.assertTrue(MoneyPot.getPot() == 200 + 10 * 30);
-		Set<Winner> winners = serviceUnderTest.draw();
+		Set<Winner> winners = serviceUnderTest.randomDraw();
 		Assert.assertEquals(3, winners.size());
-		//Assure that Money pot is still more or equal than half of it before draw
+		//Assure that Money pot is still more or equal than half of it before randomDraw
 		// (500 / 2 =  250  )
 		Assert.assertTrue(MoneyPot.getPot() >= 250);
 	}
@@ -65,9 +66,9 @@ public class LotteryServiceIntegrationTest
 		}
 		// The Money Pot should be 700 after buying 50 tickets
 		Assert.assertTrue(MoneyPot.getPot() == 200 + 10 * 50);
-		Set<Winner> winners = serviceUnderTest.draw();
+		Set<Winner> winners = serviceUnderTest.randomDraw();
 		Assert.assertEquals(3, winners.size());
-		//Assure that Money pot is still more or equal than half of it before draw
+		//Assure that Money pot is still more or equal than half of it before randomDraw
 		// (700 / 2 =  350  )
 		Assert.assertTrue(MoneyPot.getPot() >= 350);
 	}

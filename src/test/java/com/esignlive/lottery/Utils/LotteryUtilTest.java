@@ -1,18 +1,9 @@
 package com.esignlive.lottery.Utils;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.esignlive.lottery.domain.Ticket;
-import com.esignlive.lottery.domain.Winner;
-import com.esignlive.lottery.models.MoneyPot;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 

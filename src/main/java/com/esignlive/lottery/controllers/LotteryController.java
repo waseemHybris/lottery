@@ -67,13 +67,13 @@ public class LotteryController
 	@RequestMapping(value = "/draw", method = RequestMethod.POST)
 	public ResponseEntity<Set<Winner>> draw()
 	{
-		Set<Winner> winners = lotteryService.draw();
+		Set<Winner> winners = lotteryService.randomDraw();
 		return new ResponseEntity<>(winners, HttpStatus.OK);
 	}
 
-/*	@RequestMapping(value = "/pot", method = RequestMethod.GET)
+	@RequestMapping(value = "/pot", method = RequestMethod.GET)
 	public ResponseEntity<Long> pot()
 	{
 		return new ResponseEntity<>(MoneyPot.getPot(), HttpStatus.OK);
-	}*/
+	}
 }

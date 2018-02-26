@@ -1,9 +1,15 @@
 package com.esignlive.lottery.services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import com.esignlive.lottery.Utils.LotteryUtil;
@@ -46,11 +52,10 @@ public class LotteryService
 		}
 
 	}
-
-	public Set<Winner> draw()
+	
+	public Set<Winner> generousDraw()
 	{
 		LOGGER.info("The Lottery Game is drawing for winners");
-
 		Ticket winningTicket1 = tickets.getTickets().stream().findAny().get();
 		Ticket winningTicket2 = tickets.getTickets().stream().filter(t -> t.getTicketNumber() != winningTicket1.getTicketNumber())
 				.findAny()
@@ -59,6 +64,34 @@ public class LotteryService
 				.filter(t -> t.getTicketNumber() != winningTicket1.getTicketNumber() && t.getTicketNumber() != winningTicket2
 						.getTicketNumber()).findAny()
 				.get();
+
+		Winner firstWinner = new Winner(winningTicket1.getNameOfBuyer(), winningTicket1,
+				winningTicket1.isPurchased() ? LotteryUtil.calculatePrize(1) : 0, Winner.Place.FIRST);
+		Winner secondWinner = new Winner(winningTicket2.getNameOfBuyer(), winningTicket2,
+				winningTicket2.isPurchased() ? LotteryUtil.calculatePrize(2) : 0, Winner.Place.SECOND);
+		Winner thirdWinner = new Winner(winningTicket3.getNameOfBuyer(), winningTicket3,
+				winningTicket3.isPurchased() ? LotteryUtil.calculatePrize(3) : 0, Winner.Place.THIRD);
+
+		LinkedHashSet result = new LinkedHashSet<>(Arrays.asList(firstWinner, secondWinner, thirdWinner));
+
+		LotteryUtil.decreasePotAfterWin(result);
+		LotteryUtil.logWinners(result);
+		LOGGER.info("Draw is complete");
+		LOGGER.info("The Lottery Game is resetting the Tickets");
+		tickets.getTickets().clear();
+		tickets.generateTickets();
+
+		return result;
+	}
+
+	public Set<Winner> randomDraw()
+	{
+		LOGGER.info("The Lottery Game is drawing for winners");
+		List<Integer> randomList = new ArrayList();
+		ThreadLocalRandom.current().ints(1, 50).distinct().limit(3).forEach(randomList::add);
+		Ticket winningTicket1 = (Ticket) tickets.getTickets().toArray()[randomList.get(0)];
+		Ticket winningTicket2 = (Ticket) tickets.getTickets().toArray()[randomList.get(1)];
+		Ticket winningTicket3 = (Ticket) tickets.getTickets().toArray()[randomList.get(2)];
 
 		Winner firstWinner = new Winner(winningTicket1.getNameOfBuyer(), winningTicket1,
 				winningTicket1.isPurchased() ? LotteryUtil.calculatePrize(1) : 0, Winner.Place.FIRST);

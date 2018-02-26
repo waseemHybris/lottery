@@ -1,5 +1,6 @@
 package com.esignlive.lottery.Utils;
 
+import java.util.Collections;
 import java.util.Set;
 
 import com.esignlive.lottery.domain.Winner;
@@ -7,12 +8,9 @@ import com.esignlive.lottery.models.MoneyPot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 public class LotteryUtil
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LotteryUtil.class);
-
 	/**
 	 * prints the winners
 	 *
@@ -67,5 +65,4 @@ public class LotteryUtil
 			if (winner.getTicket().isPurchased())
 				MoneyPot.decreaseMoneyPot((long) winner.getPrize());
 	}
-
 }

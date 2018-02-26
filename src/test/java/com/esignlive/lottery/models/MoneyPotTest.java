@@ -4,14 +4,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class MoneyPotTest
 {
 	@Before
-	public void init(){
+	public void init()
+	{
 		MoneyPot.reset();
 	}
+
 	@Test
 	public void increaseMoneyPot()
 	{
