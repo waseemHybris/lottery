@@ -39,6 +39,8 @@ Functionality also exposed via rest so you can use the attached postman collecti
 
 `POST http://localhost:8080/lottery/draw`
 
+`GET http://localhost:8080/lottery/winners`
+
 `POST http://localhost:8080/lottery/reset`
 
 `GET http://localhost:8080/lottery/tickets`

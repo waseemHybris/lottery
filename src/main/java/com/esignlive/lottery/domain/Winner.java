@@ -1,7 +1,7 @@
 package com.esignlive.lottery.domain;
 
 /**
- * winner is a buyer with a prize
+ * winner is a buyer with a prize and a place
  */
 
 public class Winner extends Buyer

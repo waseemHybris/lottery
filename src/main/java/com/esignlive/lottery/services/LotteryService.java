@@ -9,13 +9,13 @@ import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-import com.esignlive.lottery.utils.LotteryUtil;
 import com.esignlive.lottery.domain.Buyer;
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;
 import com.esignlive.lottery.exceptions.OverBuyingException;
 import com.esignlive.lottery.repositories.MoneyPot;
 import com.esignlive.lottery.repositories.TicketsDAO;
+import com.esignlive.lottery.utils.LotteryUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +28,8 @@ public class LotteryService
 	private static final Logger LOGGER = LoggerFactory.getLogger(LotteryService.class);
 	@Autowired
 	TicketsDAO tickets;
+
+	Set<Winner> currentWinners;
 
 
 	public Buyer purchaseTicket(final String buyerName)
@@ -70,7 +72,7 @@ public class LotteryService
 				winningTicket3.isPurchased() ? LotteryUtil.calculatePrize(3) : 0, Winner.Place.THIRD);
 
 		LinkedHashSet result = new LinkedHashSet<>(Arrays.asList(firstWinner, secondWinner, thirdWinner));
-
+		populateCurrentWinners(result);
 		LotteryUtil.decreasePotAfterWin(result);
 		LotteryUtil.logWinners(result);
 		LOGGER.info("Draw is complete");
@@ -79,6 +81,13 @@ public class LotteryService
 		tickets.generateTickets();
 
 		return result;
+	}
+
+	protected void populateCurrentWinners(final LinkedHashSet currentWinners)
+	{
+		this.currentWinners = new LinkedHashSet<>();
+		this.currentWinners.addAll(currentWinners);
+
 	}
 
 	public Set<Winner> randomDraw()
@@ -98,7 +107,7 @@ public class LotteryService
 				winningTicket3.isPurchased() ? LotteryUtil.calculatePrize(3) : 0, Winner.Place.THIRD);
 
 		LinkedHashSet result = new LinkedHashSet<>(Arrays.asList(firstWinner, secondWinner, thirdWinner));
-
+		populateCurrentWinners(result);
 		LotteryUtil.decreasePotAfterWin(result);
 		LotteryUtil.logWinners(result);
 		LOGGER.info("Draw is complete");
@@ -113,8 +122,9 @@ public class LotteryService
 	{
 		tickets.getTickets().clear();
 		tickets.generateTickets();
+		currentWinners.clear();
 		MoneyPot.reset();
-		LOGGER.info("The Lottery Game is was reset");
+		LOGGER.info("The Lottery Game is reset");
 	}
 
 	public Set<Ticket> getAllTickets()
@@ -126,6 +136,22 @@ public class LotteryService
 	public Set<Ticket> getPurchasedTickets()
 	{
 		return tickets.getTickets().stream().filter(Ticket::isPurchased).collect(Collectors.toSet());
+	}
+
+	public Set<Winner> getCurrentWinners()
+	{
+		Set<Winner> result = this.currentWinners;
+		if (result != null && !result.isEmpty())
+		{
+			LOGGER.info("Winners from the latest draw were: ");
+			LotteryUtil.logWinners(this.currentWinners);
+		}
+		else
+		{
+			LOGGER.info("There are no winners before a draw");
+		}
+
+		return result;
 	}
 }
 

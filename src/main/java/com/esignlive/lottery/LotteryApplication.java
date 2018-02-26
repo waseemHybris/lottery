@@ -33,7 +33,7 @@ public class LotteryApplication implements CommandLineRunner
 			boolean running = true;
 			while (running)
 			{
-				out.println("Enter command: [PURCHASE, DRAW, RESET]");
+				out.println("Enter command: [PURCHASE, DRAW, RESET, WINNERS)]");
 				String inputCommand = scanner.nextLine();
 				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.PURCHASE.toString()))
 				{
@@ -48,6 +48,10 @@ public class LotteryApplication implements CommandLineRunner
 				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.RESET.toString()))
 				{
 					lotteryService.resetProcess();
+				}
+				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.WINNERS.toString()))
+				{
+					lotteryService.getCurrentWinners();
 				}
 				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.GDRAW.toString()))
 				{

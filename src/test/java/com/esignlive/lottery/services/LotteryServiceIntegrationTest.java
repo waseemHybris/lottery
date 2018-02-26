@@ -56,6 +56,22 @@ public class LotteryServiceIntegrationTest
 	}
 
 	@Test
+	public void winnersTest()
+	{
+		for (int i = 0; i < 50; i++)
+		{
+			serviceUnderTest.purchaseTicket(String.valueOf(i));
+		}
+		Assert.assertTrue(MoneyPot.getPot() == 200 + 10 * 50);
+		Set<Winner> winners = serviceUnderTest.randomDraw();
+		Set<Winner> currentWinners = serviceUnderTest.getCurrentWinners();
+		Assert.assertEquals(3, winners.size());
+		Assert.assertTrue(currentWinners.size()>1);
+
+
+	}
+
+	@Test
 	public void drawWithSoldOutTickets()
 	{
 		for (int i = 0; i < 50; i++)

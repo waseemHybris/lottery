@@ -52,6 +52,28 @@
 			"response": []
 		},
 		{
+			"name": "Winners",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/winners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"winners"
+					]
+				},
+				"description": "The most recent set of winners"
+			},
+			"response": []
+		},
+		{
 			"name": "Purchase",
 			"request": {
 				"method": "POST",

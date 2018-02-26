@@ -71,6 +71,11 @@ public class LotteryController
 		return new ResponseEntity<>(winners, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/winners", method = RequestMethod.GET)
+	public ResponseEntity<Set<Winner>> getCurrentWinners()
+	{
+		return new ResponseEntity<>(lotteryService.getCurrentWinners(), HttpStatus.OK);
+	}
 	@RequestMapping(value = "/pot", method = RequestMethod.GET)
 	public ResponseEntity<Long> pot()
 	{
