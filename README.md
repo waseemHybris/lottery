@@ -7,7 +7,7 @@ Assumptions:
 Required Technology:
 - Assumes you have installed and configured **Maven** and **JAVA8**
 - PORT **8080** is free
-- can run Spring Boot application.
+- Can run Spring Boot application.
 
 Instructions:
 
@@ -28,9 +28,9 @@ for MAC:
 or using Spring Boot Maven plugin
 > mvn spring-boot:run
 
-Follow instructions on console
+Follow instructions on console..
 
-Or simply import project to your preferred idea (Eclipse or Inellij) and run it from there.
+Or simply import project to your preferred idea (Eclipse or Intellij) and run it from there.
 
 Note:
 Functionality also exposed via rest so you can use the attached postman collection to make rest calls
