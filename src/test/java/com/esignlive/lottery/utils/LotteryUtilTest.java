@@ -1,4 +1,4 @@
-package com.esignlive.lottery.Utils;
+package com.esignlive.lottery.utils;
 
 import org.junit.Assert;
 import org.junit.Test;

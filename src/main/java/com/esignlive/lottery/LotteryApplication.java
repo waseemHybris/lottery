@@ -1,7 +1,6 @@
 package com.esignlive.lottery;
 
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 import com.esignlive.lottery.domain.LotteryCommand;
 import com.esignlive.lottery.services.LotteryService;
@@ -34,12 +33,8 @@ public class LotteryApplication implements CommandLineRunner
 			boolean running = true;
 			while (running)
 			{
-				out.println("Enter command: [PURCHASE, DRAW, RESET, EXIT]");
+				out.println("Enter command: [PURCHASE, DRAW, RESET]");
 				String inputCommand = scanner.nextLine();
-				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.EXIT.toString()))
-				{
-					break;
-				}
 				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.PURCHASE.toString()))
 				{
 					out.println("Enter the name of the ticket's buyer: ");
@@ -53,6 +48,10 @@ public class LotteryApplication implements CommandLineRunner
 				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.RESET.toString()))
 				{
 					lotteryService.resetProcess();
+				}
+				if (!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase(LotteryCommand.GDRAW.toString()))
+				{
+					lotteryService.generousDraw();
 				}
 			}
 		}

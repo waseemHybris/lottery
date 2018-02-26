@@ -40,7 +40,7 @@ public class Winner extends Buyer
 	public String toString()
 	{
 		return "Winner{" +
-				"prize=" + prize +
+				"prize=" + prize + "$"+
 				", place=" + place +
 				'}';
 	}

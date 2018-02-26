@@ -21,13 +21,13 @@ public class MoneyPot
 	public static void increaseMoneyPot(final long increaseAmount)
 	{
 		pot += increaseAmount;
-		LOGGER.debug("MoneyPot was increased by {}", increaseAmount);
+		LOGGER.debug("MoneyPot was increased by {}$", increaseAmount);
 	}
 
 	public static void decreaseMoneyPot(final long decreaseAmount)
 	{
 		pot -= decreaseAmount;
-		LOGGER.debug("MoneyPot was decreased by {}", decreaseAmount);
+		LOGGER.debug("MoneyPot was decreased by {}$", decreaseAmount);
 	}
 
 	public static long getPot()

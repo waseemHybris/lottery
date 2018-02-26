@@ -23,7 +23,10 @@ Will install the lottery snapshot jar to the .m2 repository folder
 
 In your command line:
 for MAC:
-> java -jar ~/.m2/repository/com/esignlive/lottery/0.0.1-SNAPSHOT/lottery-0.0.1-SNAPSHOT.jar
+> java -jar target/lottery-0.0.1-SNAPSHOT.jar
+
+or using Spring Boot Maven plugin
+> mvn spring-boot:run
 
 Follow instructions on console
 
@@ -42,3 +45,6 @@ Functionality also exposed via rest so you can use the attached postman collecti
 
 `GET http://localhost:8080/lottery/purchased-tickets`
 
+**CAN BE IMPROVED**
+
+- Validation on the buyer name

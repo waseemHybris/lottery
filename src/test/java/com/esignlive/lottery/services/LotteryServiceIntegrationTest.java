@@ -25,8 +25,6 @@ public class LotteryServiceIntegrationTest
 	public static final String BUYERNAME = "Waseem";
 	@Resource
 	private LotteryService serviceUnderTest;
-	@Resource
-	private MoneyPot moneyPot;
 
 	@After
 	public void setUp()

@@ -5,5 +5,5 @@ public enum LotteryCommand
 	PURCHASE,
 	DRAW,
 	RESET,
-	EXIT
+	GDRAW
 }

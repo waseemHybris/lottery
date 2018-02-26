@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-import com.esignlive.lottery.Utils.LotteryUtil;
+import com.esignlive.lottery.utils.LotteryUtil;
 import com.esignlive.lottery.domain.Buyer;
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;

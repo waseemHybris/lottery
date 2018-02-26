@@ -1,4 +1,4 @@
-package com.esignlive.lottery.Utils;
+package com.esignlive.lottery.utils;
 
 import java.util.Set;
 
@@ -23,7 +23,7 @@ public class LotteryUtil
 			LOGGER.info("-------------------------------------------------------");
 			LOGGER.info("winner{} is: {}", i, winner.getBuyerName());
 			LOGGER.info("ticket number: {}", winner.getTicket().getTicketNumber());
-			LOGGER.info("prize is: {}", winner.getTicket().isPurchased() ? winner.getPrize() : 0);
+			LOGGER.info("prize is: {} $", winner.getTicket().isPurchased() ? winner.getPrize() : 0);
 			LOGGER.info("-------------------------------------------------------");
 			i++;
 		}
