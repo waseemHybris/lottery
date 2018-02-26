@@ -9,7 +9,7 @@ import com.esignlive.lottery.LotteryApplication;
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;
 import com.esignlive.lottery.exceptions.OverBuyingException;
-import com.esignlive.lottery.models.MoneyPot;
+import com.esignlive.lottery.repositories.MoneyPot;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -68,6 +68,9 @@ public class LotteryServiceIntegrationTest
 		Assert.assertTrue(MoneyPot.getPot() == 200 + 10 * 50);
 		Set<Winner> winners = serviceUnderTest.randomDraw();
 		Assert.assertEquals(3, winners.size());
+		Assert.assertTrue(((Winner)winners.toArray()[0]).getTicket().isPurchased());
+		Assert.assertTrue(((Winner)winners.toArray()[1]).getTicket().isPurchased());
+		Assert.assertTrue(((Winner)winners.toArray()[2]).getTicket().isPurchased());
 		//Assure that Money pot is still more or equal than half of it before randomDraw
 		// (700 / 2 =  350  )
 		Assert.assertTrue(MoneyPot.getPot() >= 350);

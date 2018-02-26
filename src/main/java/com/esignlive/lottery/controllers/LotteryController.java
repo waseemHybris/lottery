@@ -9,7 +9,7 @@ import com.esignlive.lottery.domain.Buyer;
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;
 import com.esignlive.lottery.exceptions.OverBuyingException;
-import com.esignlive.lottery.models.MoneyPot;
+import com.esignlive.lottery.repositories.MoneyPot;
 import com.esignlive.lottery.services.LotteryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,0 +1,144 @@
+{
+	"info": {
+		"name": "lottery",
+		"_postman_id": "e12307f4-3d01-fdcc-6774-400188a93d58",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Draw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/draw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"draw"
+					]
+				},
+				"description": "Draws for winners"
+			},
+			"response": []
+		},
+		{
+			"name": "Pot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/draw/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"draw",
+						""
+					]
+				},
+				"description": "how much is in the pot"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/purchase/{buyersName}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"purchase",
+						"{buyersName}"
+					]
+				},
+				"description": "waiting for path param with the name of the buyer.\nIt buys a ticket out of the available tickets."
+			},
+			"response": []
+		},
+		{
+			"name": "Reset",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"reset"
+					]
+				},
+				"description": "Resets the game"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllTickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"tickets"
+					]
+				},
+				"description": "Gets all the tickets"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Purchased Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/lottery/purchased-tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lottery",
+						"purchased-tickets"
+					]
+				},
+				"description": "Return a set of purchased tickets"
+			},
+			"response": []
+		}
+	]
+}

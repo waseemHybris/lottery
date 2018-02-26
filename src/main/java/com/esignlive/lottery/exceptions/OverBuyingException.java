@@ -3,8 +3,6 @@ package com.esignlive.lottery.exceptions;
 
 public class OverBuyingException extends RuntimeException
 {
-
-
 	public OverBuyingException()
 	{
 		super();

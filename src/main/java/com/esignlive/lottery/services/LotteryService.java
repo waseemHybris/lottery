@@ -2,12 +2,9 @@ package com.esignlive.lottery.services;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -17,7 +14,7 @@ import com.esignlive.lottery.domain.Buyer;
 import com.esignlive.lottery.domain.Ticket;
 import com.esignlive.lottery.domain.Winner;
 import com.esignlive.lottery.exceptions.OverBuyingException;
-import com.esignlive.lottery.models.MoneyPot;
+import com.esignlive.lottery.repositories.MoneyPot;
 import com.esignlive.lottery.repositories.TicketsDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +49,7 @@ public class LotteryService
 		}
 
 	}
-	
+
 	public Set<Winner> generousDraw()
 	{
 		LOGGER.info("The Lottery Game is drawing for winners");

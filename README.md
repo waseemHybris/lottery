@@ -1,7 +1,7 @@
 Assumptions: 
 - If a ticket is purchased and won we assume that the prize is being claimed.
-- After each Draw we reset the tickets.
-- Draw Function is generous and will give the win to the purchased ticket // TODO
+- After each draw we reset the tickets.
+- Money Pot carries on unless a reset was processed.
 
 
 Required Technology:

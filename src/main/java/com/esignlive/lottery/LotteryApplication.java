@@ -54,10 +54,6 @@ public class LotteryApplication implements CommandLineRunner
 				{
 					lotteryService.resetProcess();
 				}
-				//TODO REMOVE
-				if(!StringUtils.isEmpty(inputCommand) && inputCommand.equalsIgnoreCase("RANDOM")){
-					ThreadLocalRandom.current().ints(1, 50).distinct().limit(3).forEach(System.out::println);
-				}
 			}
 		}
 		finally

@@ -1,5 +1,6 @@
 package com.esignlive.lottery.models;
 
+import com.esignlive.lottery.repositories.MoneyPot;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

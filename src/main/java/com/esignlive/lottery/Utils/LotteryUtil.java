@@ -1,10 +1,9 @@
 package com.esignlive.lottery.Utils;
 
-import java.util.Collections;
 import java.util.Set;
 
 import com.esignlive.lottery.domain.Winner;
-import com.esignlive.lottery.models.MoneyPot;
+import com.esignlive.lottery.repositories.MoneyPot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

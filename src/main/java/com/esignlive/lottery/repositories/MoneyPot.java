@@ -1,13 +1,13 @@
-package com.esignlive.lottery.models;
+package com.esignlive.lottery.repositories;
 
 import javax.validation.constraints.Min;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 
-@Component
+@Repository
 public class MoneyPot
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MoneyPot.class);
